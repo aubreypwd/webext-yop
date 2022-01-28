@@ -22,15 +22,18 @@ function toggle( tabId ) {
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  1.0.0
 	 * @param  {string} icon
+	 * @param  {string} badge   Badge label.
+	 * @param  {string} color   Badge color.
+	 * @param  {string} tooltip Tooltip.
 	 */
-	function setIcon( icon, message, color ) {
+	function setIcon( icon, badge, color, toolTip ) {
 
 		chrome.browserAction.setIcon( {
 			path: `icons/${icon}`,
 		} );
 
 		chrome.browserAction.setBadgeText( {
-			text: message,
+			text: badge,
 		} );
 
 		chrome.browserAction.setBadgeBackgroundColor( {
@@ -38,7 +41,7 @@ function toggle( tabId ) {
 		} );
 
 		chrome.browserAction.setTitle( {
-			title: message,
+			title: toolTip,
 		} );
 	}
 
@@ -127,26 +130,26 @@ function toggle( tabId ) {
 
 		// Dev
 		if ( isDev( tab.url ) ) {
-			return setIcon( 'dev.png', 'local', 'green' );
+			return setIcon( 'dev.png', 'local', 'green', 'localhost' );
 		}
 
 		// WDSLAB
 		if ( isLab( tab.url ) ) {
-			return setIcon( 'lab.png', 'lab', 'orange' );
+			return setIcon( 'lab.png', 'lab', 'orange', 'wdslab.com' );
 		}
 
 		// Staging.
 		if ( isStaging( tab.url ) ) {
-			return setIcon( 'staging.png', 'stage', 'blue' );
+			return setIcon( 'staging.png', 'stage', 'blue', 'Staging' );
 		}
 
 		// Production.
 		if ( isProd( tab.url ) ) {
-			return setIcon( 'production.png', 'prod', 'red' );
+			return setIcon( 'production.png', 'prod', 'red', "You're on Production!" );
 		}
 
 		// Everything else.
-		setIcon( 'unknown.png', '', 'black' )
+		setIcon( 'unknown.png', '', 'black', 'Unknown' );
 
 	} );
 }
