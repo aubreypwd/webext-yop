@@ -1,8 +1,8 @@
 # You're on Production!
 
-This is a simple Chrome extension that warns you when you're on Production!
+<img src="https://user-images.githubusercontent.com/1753298/151636483-b85be093-82cc-4d76-af51-bd5d44e7781e.gif" alt="Screenshot" style="float: right; margin-left: 20px; margin-bottom: 20px;" />
 
-![CleanShot-Google Chrome-Extensions-2022-01-28-04 45PM 52](https://user-images.githubusercontent.com/1753298/151636483-b85be093-82cc-4d76-af51-bd5d44e7781e.gif)
+This is a simple Chrome extension that warns you when you're on Production!
 
 ## Installation
 
