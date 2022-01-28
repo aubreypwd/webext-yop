@@ -26,9 +26,9 @@ function toggle( tabId ) {
 	 * @param  {string} color   Badge color.
 	 * @param  {string} tooltip Tooltip.
 	 */
-	function setIcon( icon, badge, color, toolTip ) {
+	function setExtInfo( icon, badge, color, toolTip ) {
 
-		chrome.browserAction.setIcon( {
+		chrome.browserAction.setExtInfo( {
 			path: `icons/${icon}`,
 		} );
 
@@ -130,26 +130,51 @@ function toggle( tabId ) {
 
 		// Dev
 		if ( isDev( tab.url ) ) {
-			return setIcon( 'dev.png', 'local', 'green', 'localhost' );
+			return setExtInfo(
+				'dev.png',
+				'local',
+				'green',
+				'localhost'
+			);
 		}
 
 		// WDSLAB
 		if ( isLab( tab.url ) ) {
-			return setIcon( 'lab.png', 'lab', 'orange', 'wdslab.com' );
+			return setExtInfo(
+				'lab.png',
+				'lab',
+				'orange',
+				'wdslab.com'
+			);
 		}
 
 		// Staging.
 		if ( isStaging( tab.url ) ) {
-			return setIcon( 'staging.png', 'stage', 'blue', 'Staging' );
+			return setExtInfo(
+				'staging.png',
+				'stage',
+				'blue',
+				'Staging'
+			);
 		}
 
 		// Production.
 		if ( isProd( tab.url ) ) {
-			return setIcon( 'production.png', 'prod', 'red', "You're on Production!" );
+			return setExtInfo(
+				'production.png',
+				'prod',
+				'red',
+				"You're on Production!"
+			);
 		}
 
 		// Everything else.
-		setIcon( 'unknown.png', '', 'black', 'Unknown' );
+		setExtInfo(
+			'unknown.png',
+			'',
+			'black',
+			'Unknown'
+		);
 
 	} );
 }
