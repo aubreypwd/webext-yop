@@ -26,7 +26,7 @@ function toggle( tabId ) {
 	function setIcon( icon, message, color ) {
 
 		chrome.browserAction.setIcon( {
-			path: icon
+			path: `icons/${icon}`,
 		} );
 
 		chrome.browserAction.setBadgeText( {
@@ -85,6 +85,8 @@ function toggle( tabId ) {
 	function isStaging( url ) {
 		return (
 			stringHas( url, '.staging.' ) ||
+			stringHas( url, '://stg.' ) ||
+			stringHas( url, '://stage.' ) ||
 			stringHas( url, '://staging.' )
 		);
 	}
@@ -97,7 +99,7 @@ function toggle( tabId ) {
 	 * @param  {string} url URL
 	 * @return {bool}
 	 */
-	function urlIsProdTld( url ) {
+	function urlHasProdTld( url ) {
 
 		for ( const tld of prodTlds ) {
 			if ( stringHas( url, `.${tld}` ) ) {
@@ -109,22 +111,6 @@ function toggle( tabId ) {
 	}
 
 	/**
-	 * A URL that is not prod.
-	 *
-	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  1.0.0
-	 * @param  {string}  url URL.
-	 * @return {bool}
-	 */
-	function isNotProd( url ) {
-		return (
-			isDev( url ) ||
-			isStaging( url ) ||
-			isLab( url )
-		);
-	}
-
-	/**
 	 * Production
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
@@ -133,14 +119,7 @@ function toggle( tabId ) {
 	 * @return {bool}
 	 */
 	function isProd( url ) {
-
-		if ( isNotProd( url ) ) {
-
-			// DEV, Staging, and Lab rules override all.
-			return false;
-		}
-
-		return urlIsProdTld( url );
+		return urlHasProdTld( url );
 	}
 
 	// Get the activated tab.
