@@ -1,7 +1,9 @@
 {
   "name": "You're on Production!",
-  "description": "Warns you when you are on production, a staging site, or local dev.",
-  "version": "1.0",
+  "short_name": "Y.O.P.!",
+  "description": "An extension that warns you when you are on production!",
+  "version": "1.0.0",
+  "author": "Aubrey Portwood",
   "background": {
      "scripts": [
         "background.js"
@@ -17,5 +19,7 @@
     },
     "default_title": "Unknown"
   },
-  "manifest_version": 2
+  "manifest_version": 2,
+  "offline_enabled": true,
+  "minimum_chrome_version": "97.0.4692.99"
 }
