@@ -12,7 +12,10 @@
     "tabs"
   ],
   "browser_action": {
-    "default_title": ""
+    "default_icon": {
+      "16": "icons/unknown.png"
+    },
+    "default_title": "Unknown"
   },
   "manifest_version": 2
 }

@@ -131,10 +131,10 @@ function toggle( tabId ) {
 		// Dev
 		if ( isDev( tab.url ) ) {
 			return setIcon(
-				'dev.png',
-				'local',
-				'green',
-				'localhost'
+				'dev.png', // Icon
+				'local', // Badge
+				'green', // Badge color
+				'local' // Tooltip
 			);
 		}
 
