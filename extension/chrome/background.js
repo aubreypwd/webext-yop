@@ -24,6 +24,11 @@ function toggle( tabId ) {
 	 * @param  {string} icon
 	 */
 	function setIcon( icon, message, color ) {
+
+		if ( message.length < 4 && message.length !== 0 ) {
+			message = `${message} `;
+		}
+
 		chrome.browserAction.setIcon( {
 			path: icon
 		} );
@@ -138,7 +143,7 @@ function toggle( tabId ) {
 		// WDSLAB
 		} else if ( isLab( tab.url ) ) {
 
-			setIcon( 'lab.png', 'wdslab', 'orange' );
+			setIcon( 'lab.png', 'lab', 'orange' );
 
 		// Staging.
 		} else if ( isStaging( tab.url ) ) {
