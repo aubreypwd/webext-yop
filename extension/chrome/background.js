@@ -23,8 +23,22 @@ function toggle( tabId ) {
 	 * @since  1.0.0
 	 * @param  {string} icon
 	 */
-	function setIcon( icon ) {
-		chrome.browserAction.setIcon( { path: icon } );
+	function setIcon( icon, message, color ) {
+		chrome.browserAction.setIcon( {
+			path: icon
+		} );
+
+		chrome.browserAction.setBadgeText( {
+			text: message,
+		} );
+
+		chrome.browserAction.setBadgeBackgroundColor( {
+			color: color,
+		} );
+
+		chrome.browserAction.setTitle( {
+			title: message,
+		} );
 	}
 
 	/**
@@ -68,6 +82,7 @@ function toggle( tabId ) {
 	function isStaging( url ) {
 		return (
 			stringHas( url, 'staging.' ) ||
+			// stringHas( url, 'stg.' )
 			stringHas( url, '.staging.' )
 		);
 	}
@@ -118,27 +133,27 @@ function toggle( tabId ) {
 		// Dev
 		if ( isDev( tab.url ) ) {
 
-			setIcon( 'dev.png' );
+			setIcon( 'dev.png', 'local', 'green' );
 
 		// WDSLAB
 		} else if ( isLab( tab.url ) ) {
 
-			setIcon( 'lab.png' );
+			setIcon( 'lab.png', 'wdslab', 'orange' );
 
 		// Staging.
 		} else if ( isStaging( tab.url ) ) {
 
-			setIcon( 'staging.png' );
+			setIcon( 'staging.png', 'stage', 'blue' );
 
 		// Production.
 		} else  if ( isProd( tab.url ) ) {
 
-			setIcon( 'production.png' );
+			setIcon( 'production.png', 'prod', 'red' );
 
 		// Everything else.
 		} else {
 
-			setIcon( 'unknown.png' );
+			setIcon( 'unknown.png', '', 'black' );
 		}
 
 	} );

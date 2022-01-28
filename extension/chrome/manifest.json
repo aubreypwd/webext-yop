@@ -1,7 +1,7 @@
 {
   "name": "You're on Production!",
   "description": "Warns you when you are on production, a staging site, or local dev.",
-  "version": "1.0.0",
+  "version": "1.0",
   "background": {
      "scripts": [
         "background.js"
@@ -11,5 +11,8 @@
   "permissions": [
     "tabs"
   ],
+  "browser_action": {
+    "default_title": ""
+  },
   "manifest_version": 2
 }
