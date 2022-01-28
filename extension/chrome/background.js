@@ -24,7 +24,7 @@ function toggle( tabId ) {
 	 * @param  {string} icon
 	 * @param  {string} badge   Badge label.
 	 * @param  {string} color   Badge color.
-	 * @param  {string} tooltip Tooltip.
+	 * @param  {bool}   tooltip Tooltip; if set to true will say your on production!
 	 */
 	function setIcon( icon, badge, color, toolTip ) {
 
@@ -41,7 +41,7 @@ function toggle( tabId ) {
 		} );
 
 		chrome.browserAction.setTitle( {
-			title: toolTip,
+			title: toolTip ? "You're on Production!" : "You're NOT on production.",
 		} );
 	}
 
@@ -134,7 +134,7 @@ function toggle( tabId ) {
 				'dev.png', // Icon
 				'local', // Badge
 				'green', // Badge color
-				'local' // Tooltip
+				false // Tooltip: Are you on production?
 			);
 		}
 
@@ -144,7 +144,7 @@ function toggle( tabId ) {
 				'lab.png',
 				'lab',
 				'orange',
-				'wdslab.com'
+				false
 			);
 		}
 
@@ -154,7 +154,7 @@ function toggle( tabId ) {
 				'staging.png',
 				'stage',
 				'blue',
-				'Staging'
+				false
 			);
 		}
 
@@ -164,7 +164,7 @@ function toggle( tabId ) {
 				'production.png',
 				'prod',
 				'red',
-				"You're on Production!"
+				true
 			);
 		}
 
