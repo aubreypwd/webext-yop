@@ -25,10 +25,6 @@ function toggle( tabId ) {
 	 */
 	function setIcon( icon, message, color ) {
 
-		if ( message.length < 4 && message.length !== 0 ) {
-			message = `${message} `;
-		}
-
 		chrome.browserAction.setIcon( {
 			path: icon
 		} );
@@ -87,7 +83,6 @@ function toggle( tabId ) {
 	function isStaging( url ) {
 		return (
 			stringHas( url, 'staging.' ) ||
-			// stringHas( url, 'stg.' )
 			stringHas( url, '.staging.' )
 		);
 	}
