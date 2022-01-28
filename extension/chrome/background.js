@@ -71,7 +71,7 @@ function toggle( tabId ) {
 	 * @return {bool}
 	 */
 	function isLab( url ) {
-		return stringHas( url, 'wdslab.com' );
+		return stringHas( url, '.wdslab.com' );
 	}
 
 	/**
