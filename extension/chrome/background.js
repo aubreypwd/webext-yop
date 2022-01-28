@@ -26,9 +26,9 @@ function toggle( tabId ) {
 	 * @param  {string} color   Badge color.
 	 * @param  {string} tooltip Tooltip.
 	 */
-	function setExtInfo( icon, badge, color, toolTip ) {
+	function setIcon( icon, badge, color, toolTip ) {
 
-		chrome.browserAction.setExtInfo( {
+		chrome.browserAction.setIcon( {
 			path: `icons/${icon}`,
 		} );
 
@@ -130,7 +130,7 @@ function toggle( tabId ) {
 
 		// Dev
 		if ( isDev( tab.url ) ) {
-			return setExtInfo(
+			return setIcon(
 				'dev.png',
 				'local',
 				'green',
@@ -140,7 +140,7 @@ function toggle( tabId ) {
 
 		// WDSLAB
 		if ( isLab( tab.url ) ) {
-			return setExtInfo(
+			return setIcon(
 				'lab.png',
 				'lab',
 				'orange',
@@ -150,7 +150,7 @@ function toggle( tabId ) {
 
 		// Staging.
 		if ( isStaging( tab.url ) ) {
-			return setExtInfo(
+			return setIcon(
 				'staging.png',
 				'stage',
 				'blue',
@@ -160,7 +160,7 @@ function toggle( tabId ) {
 
 		// Production.
 		if ( isProd( tab.url ) ) {
-			return setExtInfo(
+			return setIcon(
 				'production.png',
 				'prod',
 				'red',
@@ -169,7 +169,7 @@ function toggle( tabId ) {
 		}
 
 		// Everything else.
-		setExtInfo(
+		setIcon(
 			'unknown.png',
 			'',
 			'black',
