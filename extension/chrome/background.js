@@ -22,11 +22,11 @@ function toggle( tabId ) {
 	 * @author Aubrey Portwood <code@aubreypwd.com>
 	 * @since  1.0.0
 	 * @param  {string} icon
-	 * @param  {string} badge   Badge label.
-	 * @param  {string} color   Badge color.
-	 * @param  {bool}   tooltip Tooltip; if set to true will say your on production!
+	 * @param  {string} badge        Badge label.
+	 * @param  {string} color        Badge color.
+	 * @param  {bool}   inProduction Tooltip; set to true to show your in production.
 	 */
-	function setIcon( icon, badge, color, toolTip ) {
+	function setIcon( icon, badge, color, inProduction ) {
 
 		chrome.browserAction.setIcon( {
 			path: `icons/${icon}`,
@@ -41,7 +41,7 @@ function toggle( tabId ) {
 		} );
 
 		chrome.browserAction.setTitle( {
-			title: toolTip ? "You're on Production!" : "You're NOT on production.",
+			title: inProduction ? "You're on Production!" : "You're NOT on production.",
 		} );
 	}
 
@@ -173,7 +173,7 @@ function toggle( tabId ) {
 			'unknown.png',
 			'',
 			'black',
-			'Unknown'
+			false
 		);
 
 	} );
