@@ -7,7 +7,7 @@ function toggle( tabId ) {
 	 * Does a string have a sub-string in it?
 	 *
 	 * @author Aubrey Portwood <code@aubreypwd.com>
-	 * @since  Friday, January 28, 2022
+	 * @since  1.0.0
 	 * @param  {string} s         String to test.
 	 * @param  {string} subString Sub-string.
 	 * @return {bool}
