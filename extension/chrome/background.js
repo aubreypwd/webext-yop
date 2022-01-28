@@ -52,11 +52,13 @@ function toggle( tabId ) {
 	 */
 	function isDev( url ) {
 		return (
-			stringHas( url, '127.0.0.1' ) ||
+			stringHas( url, '://127.0.0.1' ) ||
+			stringHas( url, '://10.0.0' ) ||
 			stringHas( url, '.local' ) ||
 			stringHas( url, '.test' ) ||
-			stringHas( url, '10.0.0' ) ||
-			stringHas( url, 'localhost' )
+
+			// Always locahost.
+			stringHas( url, '://localhost' )
 		);
 	}
 
@@ -82,8 +84,8 @@ function toggle( tabId ) {
 	 */
 	function isStaging( url ) {
 		return (
-			stringHas( url, 'staging.' ) ||
-			stringHas( url, '.staging.' )
+			stringHas( url, '.staging.' ) ||
+			stringHas( url, '://staging.' )
 		);
 	}
 
@@ -96,6 +98,7 @@ function toggle( tabId ) {
 	 * @return {bool}
 	 */
 	function urlIsProdTld( url ) {
+
 		for ( const tld of prodTlds ) {
 			if ( stringHas( url, `.${tld}` ) ) {
 				return true;
@@ -103,6 +106,22 @@ function toggle( tabId ) {
 		}
 
 		return false;
+	}
+
+	/**
+	 * A URL that is not prod.
+	 *
+	 * @author Aubrey Portwood <code@aubreypwd.com>
+	 * @since  1.0.0
+	 * @param  {string}  url URL.
+	 * @return {bool}
+	 */
+	function isNotProd( url ) {
+		return (
+			isDev( url ) ||
+			isStaging( url ) ||
+			isLab( url )
+		);
 	}
 
 	/**
@@ -114,11 +133,8 @@ function toggle( tabId ) {
 	 * @return {bool}
 	 */
 	function isProd( url ) {
-		if ( (
-			isDev( url ) ||
-			isStaging( url ) ||
-			isLab( url )
-		) ) {
+
+		if ( isNotProd( url ) ) {
 
 			// DEV, Staging, and Lab rules override all.
 			return false;
@@ -132,29 +148,26 @@ function toggle( tabId ) {
 
 		// Dev
 		if ( isDev( tab.url ) ) {
-
-			setIcon( 'dev.png', 'local', 'green' );
+			return setIcon( 'dev.png', 'local', 'green' );
+		}
 
 		// WDSLAB
-		} else if ( isLab( tab.url ) ) {
-
-			setIcon( 'lab.png', 'lab', 'orange' );
+		if ( isLab( tab.url ) ) {
+			return setIcon( 'lab.png', 'lab', 'orange' );
+		}
 
 		// Staging.
-		} else if ( isStaging( tab.url ) ) {
-
-			setIcon( 'staging.png', 'stage', 'blue' );
+		if ( isStaging( tab.url ) ) {
+			return setIcon( 'staging.png', 'stage', 'blue' );
+		}
 
 		// Production.
-		} else  if ( isProd( tab.url ) ) {
-
-			setIcon( 'production.png', 'prod', 'red' );
+		if ( isProd( tab.url ) ) {
+			return setIcon( 'production.png', 'prod', 'red' );
+		}
 
 		// Everything else.
-		} else {
-
-			setIcon( 'unknown.png', '', 'black' );
-		}
+		setIcon( 'unknown.png', '', 'black' )
 
 	} );
 }
