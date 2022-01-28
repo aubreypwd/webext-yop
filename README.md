@@ -2,7 +2,7 @@
 
 This is a simple Chrome extension that warns you when you're on Production!
 
-![CleanShot-Google Chrome-Extensions-2022-01-28-04 21PM 18](https://user-images.githubusercontent.com/1753298/151635002-f5d48e00-6f2f-4d84-9382-d54f79e0cb23.gif)
+![CleanShot-Google Chrome-Extensions-2022-01-28-04 45PM 52](https://user-images.githubusercontent.com/1753298/151636483-b85be093-82cc-4d76-af51-bd5d44e7781e.gif)
 
 ## Installation
 
